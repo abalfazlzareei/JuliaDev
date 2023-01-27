@@ -1,6 +1,6 @@
 import { firebaseConfig } from "./FirebaseConfig";
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 

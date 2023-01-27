@@ -7,6 +7,7 @@ import ReactFlow, {
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
+import LogoutButton from '../components/DayPlanner/Logout/LogoutButton';
 
 import DayPlanner from '../components/DayPlanner/DayPlanner';
 import CalendarComponent from '../components/DayPlanner/Calendar/Calendar';
@@ -52,6 +53,8 @@ const initialEdges:Edge[] = [];
 function Home() {
   return (
     <div className='w-full h-screen'>
+
+      <LogoutButton/>
 
       <ReactFlow
             defaultNodes={initialNodes}
