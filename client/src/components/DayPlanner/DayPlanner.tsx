@@ -25,7 +25,7 @@ function DayPlanner({data}:Props) {
     <NodeResizeControl style={controlStyle} minWidth={100} minHeight={50}>
     </NodeResizeControl>
 
-    <div className='flex flex-col'>
+    <div className='flex flex-col max-w-xs'>
         <div className='text-[10px]'>{data.label}</div>
 
         <div className='flex flex-row'>

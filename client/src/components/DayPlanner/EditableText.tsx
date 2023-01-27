@@ -31,6 +31,7 @@ const EditableText: React.FC<Props> = ({initialValue}) => {
 
             {isEditing ? (
                 <input
+                    title="editing"
                     type="text"
                     value={value}
                     onBlur={handleBlur}

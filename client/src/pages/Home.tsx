@@ -1,36 +1,47 @@
 import React from 'react'
 import ReactFlow, {
-  MiniMap,
   Background,
   BackgroundVariant,
   Controls,
-
   Edge,
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 
 import DayPlanner from '../components/DayPlanner/DayPlanner';
-
+import CalendarComponent from '../components/DayPlanner/Calendar/Calendar';
 
 const nodeTypes = {
-  DayPlanner
+  DayPlanner,
+  CalendarComponent
 };
 
 const initialNodes = [
-
   {
-    id: '1',
-    type: 'DayPlanner',
-    data: { label: 'DayPlanner ' },
+    id: "1",
+    type: "DayPlanner",
+    data: { label: "DayPlanner " },
     position: { x: 150, y: 150 },
     style: {
-      background: 'white',
+      background: "white",
       fontSize: 12,
-      border: '1px solid black',
+      border: "1px solid black",
       padding: 5,
       borderRadius: 5,
       height: 200,
+    },
+  },
+  {
+    id: "2",
+    type: "CalendarComponent",
+    data: { },
+    position: { x: 500, y: 500 },
+    style: {
+      background: "white",
+      fontSize: 12,
+      border: "1px solid black",
+      padding: 5,
+      borderRadius: 5,
     },
   },
 ];
