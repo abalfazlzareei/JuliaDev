@@ -1,49 +1,43 @@
-import React from 'react'
-import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
-import { useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../Firebase";
+import { Typography } from "@mui/material";
 
+//WE NEED TO USE SIGN IN WITH POPUP IF WE USE GOOGLE SIGN IN WITH A CHROME EXTENSION
 
+type LoginPageProps = {};
 
-function Login() {
-
+const LoginPage: React.FunctionComponent<LoginPageProps> = () => {
   const navigateTo = useNavigate();
+  const [authing, setAuthing] = useState(false);
 
-  function handleSubmit(){
-    navigateTo("/home" );
-  }
+  const signInWithGoogle = async () => {
+    setAuthing(true);
+
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((response) => {
+        console.log(response.user.uid);
+        navigateTo("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+        setAuthing(false);
+      });
+  };
 
   return (
-    <div className='flex justify-center items-center h-screen flex-row'>
-       <form onSubmit={handleSubmit} className="z-40 justify-center justify-items-center mb-4">
-                      <TextField
-                        margin="normal"
-                        variant="filled"
-                        required
-                        id="name"
-                        label="Username"
-                        name="name"
-                        autoComplete="name"
-                        sx={{ width: "90%", borderRadius: '40px', color: 'primary.main', backgroundColor: 'primary.contrastText' }}
-                        autoFocus
-                      />
-                      <TextField
-                        margin="normal"
-                        variant="filled"
-                        required
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                        sx={{ width: "90%", borderRadius: '40px',color: 'white', backgroundColor: 'white' }}
-                      />
-
-                    <Button type="submit" variant="contained"  sx={{ width: "90%", mt:2,  height: 50, backgroundColor:"darkblue" }}>Log in</Button>
-
-                        </form>
+    <div className="flex space-x-2 justify-center">
+      <button
+        disabled={authing}
+        type="button"
+        onClick={signInWithGoogle}
+        className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mt-20"
+      >
+        SIGN-IN WITH GOOGLE
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default LoginPage;
