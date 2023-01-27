@@ -14,12 +14,14 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.6",
+    "@reactflow/node-resizer": "^2.0.0",
     "@tauri-apps/api": "^1.2.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-resizable": "^3.0.4",
-    "react-router-dom": "^6.7.0"
+    "react-router-dom": "^6.7.0",
+    "reactflow": "^11.5.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.2",
