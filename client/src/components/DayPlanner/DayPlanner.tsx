@@ -25,10 +25,10 @@ function DayPlanner({data}:Props) {
     <NodeResizeControl style={controlStyle} minWidth={100} minHeight={50}>
     </NodeResizeControl>
 
-    <div className='flex flex-col'>
+    <div className='flex flex-col max-w-xs'>
         <div className='text-[10px]'>{data.label}</div>
 
-        <div className='flex flex-row'>
+        <div className='flex flex-row w-full'>
             <div className='w-2/6 text-[10px] flex justify-center items-center'> time </div>
             <div className='w-2/6  text-[10px] flex justify-center items-center'> task </div>
             <div className='w-2/6  text-[10px] flex justify-center items-center'> play </div>
