@@ -11,10 +11,12 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import Daddy from '../components/Daddy/Daddy';
 import DayPlanner from '../components/DayPlanner/DayPlanner';
+import Diary from '../components/Diary/Diary';
 import { v4 as uuidv4 } from 'uuid';
 
 const nodeTypes = {
-  DayPlanner
+  DayPlanner,
+  Diary
 };
 
 
@@ -132,7 +134,7 @@ useEffect(() => {
             border: '1px solid black',
             padding: 5,
             borderRadius: 5,
-            height: 200,
+            height: 50,
           },
         };
 

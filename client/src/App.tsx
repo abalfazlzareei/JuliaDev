@@ -8,9 +8,7 @@ function App() {
 
   return (
     <div className="overflow-x-hidden">
-      <Routes>
-        <Route path="/home" element={<Home/>} />
-      </Routes>
+      <Home/>
     </div>
 
   )
