@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState, useEffect } from 'react'
 import ReactFlow, {
 
   Background,
@@ -28,6 +28,52 @@ function Home() {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [contextMenuVisible, setContextMenuVisible] = React.useState(false);
   const [contextMenuPosition, setContextMenuPosition] = React.useState({ x: 0, y: 0 });
+  const [selectedNode, setSelectedNode] = useState<any>(undefined);
+
+
+  console.log(nodes)
+
+  // Delete node
+  useEffect(() => {
+
+    const handleDeleteKey = (event: KeyboardEvent) => {
+      if (event.key === 'Delete' && selectedNode) {
+        setNodes(prevNodes => prevNodes.filter(node => node.id !== selectedNode.id));
+        setSelectedNode(undefined);
+      }
+    };
+
+    document.addEventListener('keydown', handleDeleteKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleDeleteKey);
+    };
+  }, [selectedNode]);
+
+
+// Saving nodes in the local storage
+useEffect(() => {
+  if (nodes.length!==0) {
+  localStorage.setItem('nodes', JSON.stringify(nodes));}
+}, [nodes]);
+
+useEffect(() => {
+    const storedNodes = localStorage.getItem('nodes');
+    if (storedNodes) {
+      setNodes(JSON.parse(storedNodes));
+    }
+    console.log("These are stored nodes")
+    console.log(storedNodes)
+
+}, []);
+
+
+
+
+
+
+
+  // The write clock and show Daddy
 
   const handleContextMenu = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -39,7 +85,7 @@ function Home() {
     setContextMenuVisible(false);
 };
 
-React.useEffect(() => {
+useEffect(() => {
     document.addEventListener('click', handleClick);
     return () => {
         document.removeEventListener('click', handleClick);
@@ -57,6 +103,8 @@ React.useEffect(() => {
 
 
 
+
+  // When the User drops a node
   const onDragOver = useCallback((event:any) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
@@ -90,7 +138,6 @@ React.useEffect(() => {
 
       setNodes((nds:any) => nds.concat(newNode));
 
-
     },
     [
       reactFlowInstance
@@ -111,7 +158,9 @@ React.useEffect(() => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
+
             fitView
+            onNodeClick={(event, node) => setSelectedNode(node)}
       >
       <Background variant={BackgroundVariant.Dots} />
       <Controls />
