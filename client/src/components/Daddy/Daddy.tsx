@@ -28,6 +28,9 @@ export default function BasicMenu() {
           <div className='w-72 h-10 rounded-lg bg-white border-2 border-bg-black font-mono font-bold flex items-center justify-center'  draggable="true" onClick={handleClose} onDragStart={(event)=>onDragStart(event, 'Diary')}>
                  Diary
           </div>
+          <div className='w-72 h-10 rounded-lg bg-white border-2 border-bg-black font-mono font-bold flex items-center justify-center'  draggable="true" onClick={handleClose} onDragStart={(event)=>onDragStart(event, 'TextSpace')}>
+                 Text Space
+          </div>
 
         </div>
 

@@ -13,10 +13,12 @@ import Daddy from '../components/Daddy/Daddy';
 import DayPlanner from '../components/DayPlanner/DayPlanner';
 import Diary from '../components/Diary/Diary';
 import { v4 as uuidv4 } from 'uuid';
+import TextSpace from '../components/TextSpace/TextSpace';
 
 const nodeTypes = {
   DayPlanner,
-  Diary
+  Diary,
+  TextSpace
 };
 
 
@@ -64,8 +66,6 @@ useEffect(() => {
     if (storedNodes) {
       setNodes(JSON.parse(storedNodes));
     }
-    console.log("These are stored nodes")
-    console.log(storedNodes)
 
 }, []);
 
@@ -75,7 +75,7 @@ useEffect(() => {
 
 
 
-  // The write clock and show Daddy
+  // The show and hide Daddy
 
   const handleContextMenu = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -118,10 +118,6 @@ useEffect(() => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer
         .getData("application/reactflow")
-      console.log(type)
-
-
-
 
       const newNode = {
           id: uuidv4(),
@@ -160,7 +156,6 @@ useEffect(() => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
-
             fitView
             onNodeClick={(event, node) => setSelectedNode(node)}
       >
