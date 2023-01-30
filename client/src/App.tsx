@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { getCalendarList, insertEvent, getTasksList, insertTask } from "./GoogleCalendarAPI2/helper-functions";
+import { getCalendarList, insertEvent, getTasksList, insertTask } from "./GoogleCalendarAPI/helper-functions";
 
 import "./index.css";
 import Home from "./pages/Home";
-import Login from './GoogleCalendarAPI2/Login.tsx'
+import Login from './GoogleCalendarAPI/Login.tsx'
 
 function App() {
   return (
