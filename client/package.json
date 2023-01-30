@@ -15,10 +15,13 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.6",
     "@tauri-apps/api": "^1.2.0",
+    "@types/react-google-login-component": "^0.9.1",
     "dotenv": "^16.0.3",
+    "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
     "react-resizable": "^3.0.4",
     "react-router-dom": "^6.7.0"
   },
